@@ -19,6 +19,7 @@ spec:
         image: allakondaswapna/phpapp:dbimage
         ports:
         - containerPort: 3306
+          name: mysql
 
 
         #config maps integration
@@ -36,15 +37,16 @@ spec:
             memory: 256Mi
 
         volumeMounts:
-          - name: pvc-1
-            mountPath: /var/lib/mysql
+          - name: mysql-data
+            mountPath: /usr/share/nginx/html
 
       volumeClaintemplates:
         - metadata:
-            name: pvc-1
+            name: mysql-data
           spec:
             accessModes: 
               - ReadWriteOnce
+            storageClassName: gp2
             resources:
               requests:
                 storage: 2Gi  

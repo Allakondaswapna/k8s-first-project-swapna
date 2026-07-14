@@ -30,6 +30,7 @@ spec:
         - protocol: TCP
           port: 3306
 
+    # Allow DNS resolution
     - to:
         - namespaceSelector:
             matchLabels:
@@ -37,7 +38,3 @@ spec:
       ports:
         - protocol: UDP
           port: 53
-            kubernetes.io/metadata.name: ingress-nginx
-          ports:
-            - port: 80
-              protocol: UDP
